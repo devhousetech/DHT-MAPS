@@ -223,7 +223,7 @@
 			// create anchor wrapper
 			const anchor = document.createElementNS("http://www.w3.org/2000/svg", "a");
 			anchor.setAttribute("href", link);
-			anchor.setAttribute("target", "_blank");
+			anchor.setAttribute("target", "_self");
 			path.parentNode.insertBefore(anchor, path);
 			anchor.appendChild(path);
 
@@ -252,4 +252,5 @@
 
 	applyData("region-milton", pathsMilton, miltonData, 0, 0);
 	applyData("region-oakville", pathsOakville, oakvilleData, 0, 0);
+
 </script>
