@@ -2,7 +2,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
 
 1.) Create SVG your svg map 
   - Use photopea (tutorial link here)
-  - Think of just one map name, you will later use it on your entire code and styles
+  - Think of your desired map name, you will later use it on your entire code and styles
   - Add your newly created SVG map by copying the svg code you and paste it inside webflow using "embed code" element
     - The svg file structure should be like this, and make sure to add svg id:
         <svg id="svg-[add your desired map name here(w/o bracket)]" ... >
