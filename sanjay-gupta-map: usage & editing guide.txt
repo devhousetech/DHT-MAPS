@@ -18,7 +18,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
   - Congrats! Now your done creating the html and styles, lets now procced on map's script
 
 3.) Adding/Updating script(data array)
-  -just copy the exisiting script on the example code(we can update it later)
+  -just copy the entire example script(we can update it later), and paste it in another embed code element
   -rename the existing dataArray name with your own map's name(example are "milton" -> "yourmapsname")
   -update data array's content(donnot use the content example of milton and oakville), all objects inside array should be matched with your svg file
     -all objects inside array should be update as follows:
