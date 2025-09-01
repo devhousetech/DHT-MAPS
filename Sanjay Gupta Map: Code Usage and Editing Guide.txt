@@ -31,10 +31,10 @@ Sanjay Gupta Map: Code Usage and Editing Guide
 4.) On script functions
   -update the code the you will see at the very bottom
     -applyFunc([add your map name here(w/o bracket and must be inside the double quote)], [update this with your dataArray name (w/o bracket)]);
-  -Congrats! Now you are done with the initial map, let's proceed on how to to updating overall looks of the map
+  -Congrats! Now you are done with the initial map, let's proceed on how to to update overall looks of the map
 
 
-HoW to update overall looks, and animation?
+How to update map's CSS and animation?
 -
 -
 -
