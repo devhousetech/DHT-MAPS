@@ -14,7 +14,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     -path-[add your map name here(w/o bracket)]
     -#path-shadow-[add your map name here(w/o bracket)]
     -path-text-[add your map name here(w/o bracket)]
-  - you can place it in another embed code element or either place it together with your existing embed code element that you recenlty used in svg file(which ever works best)
+  - updated css can be place in another embed code element or either place it together with your existing embed code element you recenlty used for svg map file(which ever works best)
   - Congrats! Now your done creating the html and styles, lets now procced on map's script
 
 3.) Adding/Updating script(data array)
