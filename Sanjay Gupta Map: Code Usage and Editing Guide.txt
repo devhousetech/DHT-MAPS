@@ -9,7 +9,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
           <path d="sample-onlyxxxxxx xxxxx">
           // add the rest of your reamining paths
         </svg>
-2.) Updating CSS
+2.) Adding and Updating CSS
   - just copy the existing style on the example code(we can update it later), for now we just need to update the following css class/id naming:
     -path-[add your map name here(w/o bracket)]
     -#path-shadow-[add your map name here(w/o bracket)]
