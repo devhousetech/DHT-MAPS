@@ -1,6 +1,6 @@
 Sanjay Gupta Map: Code Usage and Editing Guide
 
-1.) Create SVG your svg map 
+1.) Creating SVG map
   - Use photopea (tutorial link here)
   - Think of your desired map name, you will later use it on your entire code and styles
   - Add your newly created SVG map by copying the svg code you and paste it inside webflow using "embed code" element
@@ -9,12 +9,13 @@ Sanjay Gupta Map: Code Usage and Editing Guide
           <path d="sample-onlyxxxxxx xxxxx">
           // add the rest of your reamining paths
         </svg>
-2.) Add style, you can place it in another embed code element or either place it together with your existing embed code element that you used in svg file(which ever works best)
+2.) Updating CSS
   - just copy the existing style on the example code(we can update it later), for now we just need to update the following css class/id naming:
     -path-[add your map name here(w/o bracket)]
     -#path-shadow-[add your map name here(w/o bracket)]
     -path-text-[add your map name here(w/o bracket)]
-- Congrats! Now your done creating the html and styles, lets now procced on map's script
+  - you can place it in another embed code element or either place it together with your existing embed code element that you recenlty used in svg file(which ever works best)
+  - Congrats! Now your done creating the html and styles, lets now procced on map's script
 
 3.) On Script data array
   -rename the existing dataArray name with your own map's name(example are "miltonData" -> "yourmapsname")
