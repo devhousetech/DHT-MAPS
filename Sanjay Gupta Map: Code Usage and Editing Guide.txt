@@ -24,7 +24,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     -all objects inside array should be update as follows:
         -name: name for each map's places
         -fill: default color of specific place(before hover state)
-        -link: redirect link for each places of inside map
+        -link: redirect link for each places inside the map
         -offsetX: use to adjust text element's position horizontally(set value to 0 if offset is not needed)
         -offsetY: use to adjust adjust text element's position vertically(set value to 0 if offset is not needed)
         -wordsPerLine: helps when you want to make the next word be placed into next line, set desired word per line
