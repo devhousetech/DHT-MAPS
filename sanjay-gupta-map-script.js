@@ -1,5 +1,6 @@
 <script>
-	//You just need to input this single script to a separate embed code webflow element and place it anywhere below the page
+//You just need to add this whole script to a separate webflow embed code element and then place it anywhere below the page
+
 const miltonData = [
   { name: "Glenorchy", fill: "#e0e0e0", link: "/milton/glenorchy", offsetX: 0, offsetY: 0 },
   { name: "Ford Drive", fill: "#cccccc", link: "/milton/ford-drive", offsetX: 0, offsetY: 0 },
