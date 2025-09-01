@@ -20,7 +20,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
 3.) Updating script's data array
   -rename the existing dataArray name with your own map's name(example are "miltonData" -> "yourmapsname")
   -update data array's content(donnot use the content example of miltonData and oakvilleData), data array's content should be matched with your svg file
-    -all objects inside array should updated as follows:
+    -all objects inside array should be update as follows:
         -name: name for each map's places
         -fill: default color of specific place(before hover state)
         -offsetX: use to adjust text element's position horizontally(set value to 0 if offset is not needed)
