@@ -17,7 +17,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
   - you can place it in another embed code element or either place it together with your existing embed code element that you recenlty used in svg file(which ever works best)
   - Congrats! Now your done creating the html and styles, lets now procced on map's script
 
-3.) On Script data array
+3.) Updating script's data array
   -rename the existing dataArray name with your own map's name(example are "miltonData" -> "yourmapsname")
   -update data array's content(donnot use the content example of miltonData and oakvilleData), data array's content should be matched with your svg file
     -all objects inside array should updated as follows:
@@ -28,7 +28,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
         -wordsPerLine: helps when you want to make the next word be placed into next line, set desired word per line
   -Congrats! Now you are done with the data, let's proceed to script's functions
 
-4.) On script functions
+4.) Updating script's function
   -update the code the you will see at the very bottom
     -applyFunc([add your map name here(w/o bracket and must be inside the double quote)], [update this with your dataArray name (w/o bracket)]);
   -Congrats! Now you are done with the initial map, let's proceed on how to to update overall looks of the map
