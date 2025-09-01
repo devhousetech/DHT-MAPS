@@ -16,87 +16,36 @@
         z-index: 1;
     }
 
-  /* ---- BASE (no visible border until hover/focus) ---- */
-  /* Case A: individual <path> carries the id */
-  svg path[id*="ILM-map"] {
-    stroke: transparent;                 /* hidden until hover/focus */
-    stroke-width: 2px;
-    vector-effect: non-scaling-stroke;   /* keep 2px crisp at any zoom */
-    transition: transform 300ms ease, filter 300ms ease, stroke 150ms ease;
-    transform-origin: center;
-    transform-box: fill-box;             /* transform relative to shape bounds */
-    cursor: pointer;
-    outline: none;
-  }
-
-  /* Case B: a <g> carries the id; we animate the group and style child paths */
-  svg g[id*="ILM-map"] {
-    transition: transform 300ms ease, filter 300ms ease;
+  /* Smooth transform + crisp stroke for originals (no visual change until hover) */
+  svg path[id="ILM-map"] {
+    transition: transform 250ms ease, filter 250ms ease;
     transform-origin: center;
     transform-box: fill-box;
-    cursor: pointer;
-    outline: none;
+    vector-effect: non-scaling-stroke;
   }
-  svg g[id*="ILM-map"] path {
-    stroke: transparent;
+
+  /* Styling for the temporary overlay clone shown on hover */
+  .ilm-hover-clone {
+    stroke: #223069;
     stroke-width: 2px;
     vector-effect: non-scaling-stroke;
-    transition: stroke 150ms ease;
+    transform-origin: center;
+    transform-box: fill-box;
+    /* pop + nudge up */
+    transform: translateY(-3px) scale(1.04);
+    filter: drop-shadow(0 2px 0 rgba(0,0,0,0.18));
+    pointer-events: none; /* overlay should not steal the pointer */
   }
 
-  /* ---- HOVER / FOCUS EFFECTS ---- */
-  /* Case A: path gets animated and bordered on hover/focus */
-  svg path[id*="ILM-map"]:hover,
-  svg path[id*="ILM-map"]:focus-visible,
-  svg path[id*="ILM-map"].is-hovered {
-    transform: translateY(-2px) scale(1.03);
-    filter: drop-shadow(0 2px 0 rgba(0,0,0,0.15));
-    stroke: #223069;                     /* show border only on hover/focus */
-  }
-  svg path[id*="ILM-map"]:active,
-  svg path[id*="ILM-map"].is-pressed {
-    transform: translateY(-1px) scale(1.01);
-    filter: drop-shadow(0 1px 0 rgba(0,0,0,0.12));
-    transition-duration: 120ms;
-  }
-
-  /* Case B: group animates; child paths show the border */
-  svg g[id*="ILM-map"]:hover,
-  svg g[id*="ILM-map"]:focus-visible,
-  svg g[id*="ILM-map"].is-hovered {
-    transform: translateY(-2px) scale(1.03);
-    filter: drop-shadow(0 2px 0 rgba(0,0,0,0.15));
-  }
-  svg g[id*="ILM-map"]:hover path,
-  svg g[id*="ILM-map"]:focus-visible path,
-  svg g[id*="ILM-map"].is-hovered path {
-    stroke: #223069;
-  }
-  svg g[id*="ILM-map"]:active,
-  svg g[id*="ILM-map"].is-pressed {
-    transform: translateY(-1px) scale(1.01);
-    filter: drop-shadow(0 1px 0 rgba(0,0,0,0.12));
-    transition-duration: 120ms;
-  }
-
-  /* Accessibility: respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    svg path[id*="ILM-map"],
-    svg g[id*="ILM-map"] {
+    svg path[id="ILM-map"],
+    .ilm-hover-clone {
       transition: none;
-    }
-    svg path[id*="ILM-map"]:hover,
-    svg path[id*="ILM-map"]:focus-visible,
-    svg path[id*="ILM-map"].is-hovered,
-    svg g[id*="ILM-map"]:hover,
-    svg g[id*="ILM-map"]:focus-visible,
-    svg g[id*="ILM-map"].is-hovered {
       transform: none;
       filter: none;
     }
   }
 
-		
 </style>
 
 
