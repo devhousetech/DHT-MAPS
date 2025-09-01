@@ -1,4 +1,5 @@
 <script>
+	
 const miltonData = [
   { name: "Glenorchy", fill: "#e0e0e0", link: "/milton/glenorchy", offsetX: 0, offsetY: 0, wordsPerLine: 2 },
   { name: "Ford Drive", fill: "#cccccc", link: "/milton/ford-drive", offsetX: 0, offsetY: 0, wordsPerLine: 2 },
@@ -45,81 +46,86 @@ const oakvilleData = [
 ];
 
 function addDropShadow(elementId) {
-  const svg = document.querySelector(`svg#svg-${elementId}`);
+	const svg = document.querySelector(`svg#svg-${elementId}`);
+	
 	const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-  svg.insertBefore(defs, svg.firstChild);
-
-  const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
-  filter.setAttribute("id", `path-shadow-${elementId}`);
-  filter.setAttribute("x", "-50%");
-  filter.setAttribute("y", "-50%");
-  filter.setAttribute("width", "200%");
-  filter.setAttribute("height", "200%");
-
-  const dropShadow = document.createElementNS("http://www.w3.org/2000/svg", "feDropShadow");
-  dropShadow.setAttribute("dx", "2");
-  dropShadow.setAttribute("dy", "2");
-  dropShadow.setAttribute("stdDeviation", "3");
-  dropShadow.setAttribute("flood-color", "#000");
-  dropShadow.setAttribute("flood-opacity", "0.4");
-
-  filter.appendChild(dropShadow);
-  defs.appendChild(filter);
+	svg.insertBefore(defs, svg.firstChild);
+	
+	const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+	filter.setAttribute("id", `path-shadow-${elementId}`);
+	filter.setAttribute("x", "-50%");
+	filter.setAttribute("y", "-50%");
+	filter.setAttribute("width", "200%");
+	filter.setAttribute("height", "200%");
+	
+	const dropShadow = document.createElementNS("http://www.w3.org/2000/svg", "feDropShadow");
+	dropShadow.setAttribute("dx", "2");
+	dropShadow.setAttribute("dy", "2");
+	dropShadow.setAttribute("stdDeviation", "3");
+	dropShadow.setAttribute("flood-color", "#000");
+	dropShadow.setAttribute("flood-opacity", "0.4");
+	
+	filter.appendChild(dropShadow);
+	defs.appendChild(filter);
 }
 function splitName(name, maxWordsPerLine = 2) {
-  const words = name.split(' ');
-  const lines = [];
-  for (let i = 0; i < words.length; i += maxWordsPerLine) {
+	const words = name.split(' ');
+	const lines = [];
+	for (let i = 0; i < words.length; i += maxWordsPerLine) {
     lines.push(words.slice(i, i + maxWordsPerLine).join(' '));
-  }
-  return lines;
+	}
+	return lines;
 }
 
 function applyFunc(elementId, data) {
-  addDropShadow(elementId);
-  const paths = document.querySelectorAll(`svg#svg-${elementId} path`);
-  paths.forEach((path, i) => {
-  	if(!data[i]) return;
-    const { name, fill, link, offsetX, offsetY, wordsPerLine } = data[i];
-    path.classList.add(`path-${elementId}`);
-    // set default fill color(pull from data array)
-    path.setAttribute("fill", fill);
-		//Add anchor and link in each path(pull from data array)
-    let anchor;
-    if (path.parentNode.tagName.toLowerCase() !== 'a') {
-      anchor = document.createElementNS("http://www.w3.org/2000/svg", "a");
-      anchor.setAttribute("href", link);
-      anchor.setAttribute("target", "_blank");
-      anchor.style.cursor = "pointer";
-      path.parentNode.insertBefore(anchor, path);
-      anchor.appendChild(path);
-    } else {
-      anchor = path.parentNode;
-    }
-		//add text in each path(pull from data array)
-    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    const bbox = path.getBBox();
-    const x = bbox.x + bbox.width / 2 + offsetX;
-    const y = bbox.y + bbox.height / 2 + offsetY;
-    text.setAttribute("x", x);
-    text.setAttribute("y", y);
-    text.setAttribute("class", `path-text-${elementId}`);
-    text.setAttribute("text-anchor", "middle");
-    text.setAttribute("dominant-baseline", "middle");
-    text.setAttribute("pointer-events", "none");
-    splitName(name, wordsPerLine).forEach((line, index) => {
-      const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-      tspan.setAttribute("x", x);
-      tspan.setAttribute("dy", index === 0 ? "0" : "1.2em");
-      tspan.textContent = line;
-      text.appendChild(tspan);
-    });
+	addDropShadow(elementId);
+	const paths = document.querySelectorAll(`svg#svg-${elementId} path`);
+	paths.forEach((path, i) => {
+		if(!data[i]) return;
+		const { name, fill, link, offsetX, offsetY, wordsPerLine } = data[i];
+		path.classList.add(`path-${elementId}`);
+		
+		// set default fill color for each path(fill color pull from data array)
+		path.setAttribute("fill", fill);
+		
+		//Add anchor and link in each path(links pull from data array)
+		let anchor;
+		if (path.parentNode.tagName.toLowerCase() !== 'a') {
+			anchor = document.createElementNS("http://www.w3.org/2000/svg", "a");
+			anchor.setAttribute("href", link);
+			anchor.setAttribute("target", "_blank");
+			anchor.style.cursor = "pointer";
+			path.parentNode.insertBefore(anchor, path);
+			anchor.appendChild(path);
+		} else {
+			anchor = path.parentNode;
+		}
+		
+		//add text inside each path(name, offset position, words per line are pull from data array)
+		const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+		const bbox = path.getBBox();
+		const x = bbox.x + bbox.width / 2 + offsetX;
+		const y = bbox.y + bbox.height / 2 + offsetY;
+		text.setAttribute("x", x);
+		text.setAttribute("y", y);
+		text.setAttribute("class", `path-text-${elementId}`);
+		text.setAttribute("text-anchor", "middle");
+		text.setAttribute("dominant-baseline", "middle");
+		text.setAttribute("pointer-events", "none");
+		splitName(name, wordsPerLine).forEach((line, index) => {
+			const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+			tspan.setAttribute("x", x);
+			tspan.setAttribute("dy", index === 0 ? "0" : "1.2em");
+			tspan.textContent = line;
+			text.appendChild(tspan);
+		});
 		anchor.appendChild(text);
-    // place specific path on top of all paths element when hovered
-    path.addEventListener("mouseenter", () => {
-      anchor.parentNode.appendChild(anchor);
-    });
-  });
+		
+		// place specific path on top of all paths element in hover state
+		path.addEventListener("mouseenter", () => {
+			anchor.parentNode.appendChild(anchor);
+		});
+	});
 }
 
 applyFunc("milton", miltonData);
