@@ -20,9 +20,9 @@
 
 <style>
   .path-oakville {
-    stroke: #000;
+    stroke: #f6821f;
     stroke-width: 0;
-    transition: fill 0.2s, stroke-width 0.2s, transform 0.2s, filter 0.2s;
+    transition: fill 0.3s ease, stroke-width 0.3s ease, transform 0.3s ease, filter 0.3s ease;
     transform: translateY(0px); 
   }
   .path-oakville:hover {
@@ -31,12 +31,13 @@
     filter: url(#path-shadow-oakville);
     transform: translateY(-7px);  
   }
-  .path-oakville:hover + .path-text-oakville {
-  	fill: #f6821f;
-	}
   .path-text-oakville {
   	fill: #333;
-  	font-size: 15px;
-  	transition: fill 0.3s;
+  	font-size: 18px;
+  	transition: fill 0.3s ease;
+    font-style: italic;
+	}
+  .path-oakville:hover + .path-text-oakville {
+  	fill: #3359a2;
 	}
 </style>
