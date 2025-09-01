@@ -19,15 +19,15 @@ Sanjay Gupta Map: Code Usage and Editing Guide
 
 3.) Adding and updating script(data array)
   -just copy the exisiting script on the example code(we can update it later)
-  -rename the existing dataArray name with your own map's name(example are "miltonData" -> "yourmapsname")
-  -update data array's content(donnot use the content example of miltonData and oakvilleData), data array's content should be matched with your svg file
+  -rename the existing dataArray name with your own map's name(example are "milton" -> "yourmapsname")
+  -update data array's content(donnot use the content example of milton and oakville), all objects inside array should be matched with your svg file
     -all objects inside array should be update as follows:
         -name: name for each map's places
         -fill: default color of specific place(before hover state)
         -link: redirect link for each places inside the map
-        -offsetX: use to adjust text element's position horizontally(set value to 0 if offset is not needed)
-        -offsetY: use to adjust adjust text element's position vertically(set value to 0 if offset is not needed)
-        -wordsPerLine: helps when you want to make the next word be placed into next line, set desired word per line
+        -offsetX: use to adjust text element's position horizontally(remove in array's specific object if offset is not needed)
+        -offsetY: use to adjust adjust text element's position vertically(remove in array's specific object if offset is not needed)
+        -wordsPerLine: helps when you want to make the next word be placed into next line, set desired word per line(the value will be 2 words per line if you will not add any)
   -Congrats! Now you are done with the data, let's proceed to script's functions
 
 4.) Updating script(function)
