@@ -45,7 +45,7 @@ function addDropShadow(elementId) {
 	defs.appendChild(filter);
 }
 
-// this function's puspose is to splitword according to wordPerline value you will set
+// this function's puspose is to splitword according to wordPerline value you will set in array
 function splitName(name, maxWordsPerLine = 2) {
 	const words = name.split(' ');
 	const lines = [];
@@ -113,3 +113,4 @@ function applyFunc(elementId, data) {
 
 applyFunc("yourmapname", yourmapname);
 </script>
+
