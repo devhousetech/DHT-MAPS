@@ -19,7 +19,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
 
 3.) Adding/Updating script(data array)
   -just copy the entire code in map.js(we can update it later), and paste it in separate embed code element
-  -rename the existing array name with your desired map's name(example are "yourmapname" -> "newmapname")
+  -rename the existing array name with your desired map's name
   -then we need to update data array's content(donnot use the content example), objects inside array should be matched with your svg's path
     -objects inside array should be update as follows:
         -name: name for each map's places
@@ -54,3 +54,4 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     /* Motion */
     --transition-duration: this is the durations of how fast the animation will be  
     --translate-y-hover: this is how far the map's place will go overtop of other
+
