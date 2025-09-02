@@ -1,0 +1,56 @@
+Sanjay Gupta Map: Code Usage and Editing Guide
+
+1.) Creating SVG file for Map
+  - Use photopea to create svg map file (tutorial link here)
+  - Think of just one desired map name, you will later use it on your entire script and css
+  - Add your newly created SVG map by copying the svg code you created in photopea and paste it inside webflow using "embed code" element
+    - The svg file structure should be like this, and make sure to add svg id:
+        <svg id="svg-[Replace “yourmapname” with your desired map name]" ... >
+          <path d="sample-onlyxxxxxx xxxxx">
+          // add the rest of your remaining paths
+        </svg>
+2.) Adding/Updating CSS
+  - just copy the existing styles from the map.html(we can update it later) and paste it below your svg file
+  - then we need to update the following css(class/id naming)
+    -.path-[Replace “yourmapname” with your desired map name]
+    -#path-shadow-[Replace “yourmapname” with your desired map name]
+    -.path-text-[Replace “yourmapname” with your desired map name]
+  - Congrats! Now your done creating the html and styles, lets now procced on map's script
+
+3.) Adding/Updating script(data array)
+  -just copy the entire code in map.js(we can update it later), and paste it in separate embed code element
+  -rename the existing array name with your desired map's name(example are "yourmapname" -> "newmapname")
+  -then we need to update data array's content(donnot use the content example), objects inside array should be matched with your svg's path
+    -objects inside array should be update as follows:
+        -name: name for each map's places
+        -fill: default color of specific place(in idle state)
+        -link: redirect link for each places inside the map
+        -offsetX: use to adjust text element's position horizontally(remove in array's specific object if offset is not needed)
+        -offsetY: use to adjust text element's position vertically(remove in array's specific object if offset is not needed)
+        -wordsPerLine: helps when you want to make the next word be placed into next line, set desired word per line(the deafault value will be 2 words per line if you will not add any)
+  -Congrats! Now you are done with the data, let's proceed in updating scripts
+
+4.) Updating script(function)
+  -update the code the you will see at the very bottom of the script
+    -applyFunc([Replace “yourmapname” with your desired map name], [add your array name here]);
+  -Congrats! Now you are done with the initial map, let's proceed on how to to customize overall looks of the map
+
+5.) How to customize map's CSS and animation?
+  -In your css code in map.html, you can update the following value according to your desire
+    /* Colors */
+    --color-border: this is the border color of each map in idle state
+    --color-text: this is the color of each map text in idle state
+    --color-text-hover: this is the color of each map text in hover state
+    --color-fill-hover: this is the color of each map background in hover state
+
+    /* Typography */
+    --font-size: this is the size of each map text
+    --font-style: this is the style of each map text;
+
+    /* Borders */
+    --border-width: this is the border thickness of each map's place
+    --border-width-hover: this is the border thickness of each map's place in hover state  
+
+    /* Motion */
+    --transition-duration: this is the durations of how fast the animation will be  
+    --translate-y-hover: this is how far the map's place will go overtop of other
