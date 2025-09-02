@@ -1,5 +1,5 @@
 <script>
-	
+// array for your svg
 const yourmapname = [
   { name: "Bronte Meadows", fill: "#e0e0e0", link: "/yourmapname/bronte-meadows" },
   { name: "Cobden", fill: "#cccccc", link: "/yourmapname/cobden" },
@@ -20,6 +20,7 @@ const yourmapname = [
   { name: "Dorset Park", fill: "#f4f4f4", link: "/yourmapname/dorset-park" },
 ];
 
+//this function's puspose is to create defs element that will be use for dropshadow(in hover state)
 function addDropShadow(elementId) {
 	const svg = document.querySelector(`svg#svg-${elementId}`);
 	
@@ -43,6 +44,8 @@ function addDropShadow(elementId) {
 	filter.appendChild(dropShadow);
 	defs.appendChild(filter);
 }
+
+// this function's puspose is to splitword according to wordPerline value you will set
 function splitName(name, maxWordsPerLine = 2) {
 	const words = name.split(' ');
 	const lines = [];
@@ -52,31 +55,36 @@ function splitName(name, maxWordsPerLine = 2) {
 	return lines;
 }
 
+
+// this function will execute all logic
 function applyFunc(elementId, data) {
 	addDropShadow(elementId);
 	const paths = document.querySelectorAll(`svg#svg-${elementId} path`);
 	paths.forEach((path, i) => {
 		if(!data[i]) return;
+
+		// extracting object from array
 		const { name, fill, link, offsetX = 0, offsetY = 0, wordsPerLine = 2 } = data[i];
 		path.classList.add(`path-${elementId}`);
 		
-		// set default fill color for each path(fill color pull from data array)
+		// this will set default fill color for each path(fill color pull from array)
 		path.setAttribute("fill", fill);
 		
-		//Add anchor and link in each path(links pull from data array)
+		//creating anchor element and add links in each(links pull from array)
 		let anchor;
 		if (path.parentNode.tagName.toLowerCase() !== 'a') {
 			anchor = document.createElementNS("http://www.w3.org/2000/svg", "a");
 			anchor.setAttribute("href", link);
-			anchor.setAttribute("target", "_blank");
+			anchor.setAttribute("target", "_self");
 			anchor.style.cursor = "pointer";
 			path.parentNode.insertBefore(anchor, path);
 			anchor.appendChild(path);
 		} else {
+			// this will avoid duplication of the creation of anchor
 			anchor = path.parentNode;
 		}
 		
-		//add text inside each path(name, offset position, words per line are pull from data array)
+		//this will add text inside each path(data pull from array)
 		const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
 		const bbox = path.getBBox();
 		const x = bbox.x + bbox.width / 2 + offsetX;
@@ -96,7 +104,7 @@ function applyFunc(elementId, data) {
 		});
 		anchor.appendChild(text);
 		
-		// place specific path on top of all paths element in hover state
+		// this will place selected path on top of others(in hover state)
 		path.addEventListener("mouseenter", () => {
 			anchor.parentNode.appendChild(anchor);
 		});
@@ -104,5 +112,4 @@ function applyFunc(elementId, data) {
 }
 
 applyFunc("yourmapname", yourmapname);
-
 </script>
