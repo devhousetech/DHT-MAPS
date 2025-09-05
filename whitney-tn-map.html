@@ -4,93 +4,93 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <style>
-:root {
-  --hover-stroke: #ed2789;
-  --hover-move-svg: -10px;   /* main county rises more */
-  --hover-move-meta: -16px;  /* text + shape rise even higher */
-  --ease: cubic-bezier(.2,.6,.2,1);
-  --delay-meta: .08s;
-}
-
   /* Make the SVG flexible */
-  svg{max-width:100%;height:auto;display:block}
+  svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
   /* Inactive counties are truly static (no hover/click) */
-  #inactive-county *{ pointer-events:none; }
+  #inactive-county * {
+    pointer-events: none;
+  }
 
   /* Default state: county-shape + county-text hidden & non-interactive */
   #active-county .county :is(.county-shape,#county-shape,
-                             .county-text,#county-text){
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+                             .county-text,#county-text) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     transform: translateY(0);
     transition:
-      opacity .50s var(--ease) 0s,
-      visibility .50s var(--ease) 0s,
-      transform .50s var(--ease) 0s,
-      stroke .50s var(--ease) 0s;
+      opacity .50s cubic-bezier(.2,.6,.2,1) 0s,
+      visibility .50s cubic-bezier(.2,.6,.2,1) 0s,
+      transform .50s cubic-bezier(.2,.6,.2,1) 0s,
+      stroke .50s cubic-bezier(.2,.6,.2,1) 0s;
   }
 
   /* Base for the hoverable county drawing */
-  #active-county .county :is(.county-svg,#county-svg){
-    cursor:pointer;
-    transform-origin:center;
+  #active-county .county :is(.county-svg,#county-svg) {
+    cursor: pointer;
+    transform-origin: center;
     transform-box: fill-box;
     transition:
-      transform .25s var(--ease) 0s,
-      filter   .25s var(--ease) 0s,
-      stroke   .25s var(--ease) 0s,
-      fill     .25s var(--ease) 0s;
+      transform .25s cubic-bezier(.2,.6,.2,1) 0s,
+      filter   .25s cubic-bezier(.2,.6,.2,1) 0s,
+      stroke   .25s cubic-bezier(.2,.6,.2,1) 0s,
+      fill     .25s cubic-bezier(.2,.6,.2,1) 0s;
   }
 
   /* Hover: lift & outline the main county drawing (no delay) */
-  #active-county .county:hover :is(.county-svg,#county-svg){
-    transform: translateY(var(--hover-move-svg)) scale(1.03);
-    stroke: var(--hover-stroke);
-    stroke-width: 1;
+  #active-county .county:hover :is(.county-svg,#county-svg) {
+    transform: translateY(-10px) scale(1.03);
+    stroke: #fce1ec;
+    fill: #ed2789;
+    stroke-width: 3;
     vector-effect: non-scaling-stroke;
     filter: drop-shadow(0 2px 3px rgba(0,0,0,.25));
   }
 
-  /* Reveal county-shape + county-text with a slight delay */
-  #active-county .county:hover :is(.county-shape,#county-shape,
-                                   .county-text,#county-text){
-    opacity:1;
-    visibility:visible;
-     transform: translateY(-36px); /* baseline -20px plus hover lift */
-    filter: drop-shadow(0 2px 2px rgba(0,0,0,.20));
-    pointer-events:auto;
-    transition:
-      opacity  .25s var(--ease) var(--delay-meta),
-      transform .25s var(--ease) var(--delay-meta);
-  }
+/* Reveal + lift county-shape & county-text even higher */
+#active-county .county:hover :is(.county-shape,#county-shape,
+                                 .county-text,#county-text){
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-36px);        /* was -16px */
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.20));
+  pointer-events: auto;
+  transition:
+    opacity  .25s cubic-bezier(.2,.6,.2,1) .08s,
+    transform .25s cubic-bezier(.2,.6,.2,1) .08s;
+}
 
   /* Shape-specific stroke (also delayed slightly to match the reveal) */
-  #active-county .county:hover :is(.county-shape,#county-shape){
-    stroke: var(--hover-stroke);
-    stroke-width: 1;
+  #active-county .county:hover :is(.county-shape,#county-shape) {
+    stroke: #ed2789;
+    stroke-width: 3;
     vector-effect: non-scaling-stroke;
     stroke-linejoin: round;
     transition:
-      opacity   .25s var(--ease) var(--delay-meta),
-      transform .25s var(--ease) var(--delay-meta),
-      stroke    .25s var(--ease) var(--delay-meta);
+      opacity   .25s cubic-bezier(.2,.6,.2,1) .08s,
+      transform .25s cubic-bezier(.2,.6,.2,1) .08s,
+      stroke    .25s cubic-bezier(.2,.6,.2,1) .08s;
   }
 
   /* Text — only reveal, no stroke (inherits the same small delay above) */
-  #active-county .county:hover :is(.county-text,#county-text){}
+  #active-county .county:hover :is(.county-text,#county-text) { }
 
   /* Motion safety: respect reduced-motion */
-  @media (prefers-reduced-motion: reduce){
-    #active-county .county *{ transition: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    #active-county .county * { transition: none !important; }
   }
 
-  .inactive-county { fill: #fce1ec } 
+  .inactive-county { fill: #fce1ec }
   .county-svg      { fill: #58c4c4 }
-  .county-shape    { fill: #58c4c4 } 
-  .county-text     { fill: #ffffff } 
+  .county-shape    { fill: #58c4c4 }
+  .county-text     { fill: #ffffff }
 </style>
+
 
 </head>
 <body>
