@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,12 +38,18 @@
     .town:focus [id="town-svg"], .town:active [id="town-svg"] { stroke: none; }
 
   
+    /* Inner border for lake */
+    #lake {
+      stroke: #ffffff;
+      stroke-width: 2;
+      vector-effect: non-scaling-stroke;
+    }
 
   </style>
 </head>
 <body>
   <!-- Inline SVG so CSS/JS can target its nodes directly -->
-  <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1400" width="600" height="auto">
+  <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1400" width="1500" height="1400">
 	<title>cisneros-final-nh</title>
 	<style>
 		.s0 { fill: #646464 } 
@@ -60,13 +65,6 @@
     .town:focus, .town:active { outline: none; }
     .town:focus [id="town-svg"], .town:active [id="town-svg"] { stroke: none; }
 
-  
-    /* Inner border for lake */
-    #lake {
-      stroke: #ffffff;
-      stroke-width: 2;
-      vector-effect: non-scaling-stroke;
-    }
 
   </style>
 	<g id="town" class="town">
