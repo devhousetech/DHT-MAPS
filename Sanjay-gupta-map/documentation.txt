@@ -5,21 +5,21 @@ Sanjay Gupta Map: Code Usage and Editing Guide
   - Think of just one map's name, you will later use it on your entire script and css
   - Add your newly created SVG map by copying the svg code you created in photopea and paste it inside webflow using "embed code" element
     - The svg file structure should be like this, and make sure to add svg id
-        <svg id="svg-[Replace the word “yourmapname” with your chosen map name]" ... >
-          <path d="sample-onlyxxxxxx xxxxx">
-          // add the rest of your remaining paths
+        <svg id="svg-[Replace the word “yourmapname” with your chosen map name]" {...xxxxxxx} >
+          <path d="sample-only...xxxxxx xxxxx">
+          // ...add the rest of your remaining paths
         </svg>
 2.) Adding/Updating CSS
   - just copy all the existing CSS styles from the map.html(we can update it later) and paste it below your svg file
-  - then we just need to update the following css(class/id naming)
-    -#svg-[Replace “yourmapname” with your desired map name]
-    -#path-shadow-[Replace “yourmapname” with your desired map name]
-  - Congrats! Now your done creating the html and styles, lets now procced on map's script
+  - then we just need to update the following CSS(all #id)
+    -#svg-[Replace “yourmapname” with your chosed map's name]
+    -#path-shadow-[Replace “yourmapname” with your chosed map's name]
+  - Congrats! Now your done creating the html and css, lets now procced on map's script
 
 3.) Adding/Updating script(data array)
-  -just copy the entire code in map.js(we can update it later), and paste it in separate embed code element
+  -just copy the entire script in map.js(we can update it later), and paste it in another embed code element(youcan paste it at the very bottom of all section inside html body)
   -rename the existing array name with your desired map's name
-  -then we need to update data array's content(donnot use the content example), objects inside array should be matched with your svg's path
+  -and then we need to update data array's content(donnot use the existing content example), take note that objects inside array should be matched with your svg's path
     -objects inside array should be update as follows:
         -name: name for each map's places
         -fill: default color of specific place(in idle state)
@@ -30,9 +30,9 @@ Sanjay Gupta Map: Code Usage and Editing Guide
   -Congrats! Now you are done with the data, let's proceed in updating scripts
 
 4.) Updating script(function)
-  -update the code the you will see at the very bottom of the script
-    -applyFunc([Replace “yourmapname” with your desired map name], [add your array name here]);
-  -Congrats! Now you are done with the initial map, let's proceed on how to to customize overall looks of the map
+  -update the function name "applyFunc", you will see at the very bottom of the script
+    -applyFunc([Replace “yourmapname” with your chosen map's name], [add your array name here, same name as your map's name]);
+  -Congrats! Now you are done with the initial map, let's proceed on how to to customize overall theme of your map
 
 5.) How to customize map's CSS and animation?
   -In your CSS code(root) copied from map.html, you just need to update the following value according to your client's theme and preference
@@ -55,5 +55,6 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     --transition-map-duration: this is the durations of how fast the animation will be  
     --translate-y-map-hover: this is how far the map's place will go overtop of other
     --transition-map-text-scale-hover: this is how large the map's text will resize on hover state
+
 
 
