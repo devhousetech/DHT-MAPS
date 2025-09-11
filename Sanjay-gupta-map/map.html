@@ -37,47 +37,69 @@
 
 <style>
 	:root {
-		/* Colors */
-		--color-border: #f6821f;
-		--color-text: #333;
-		--color-text-hover: #3359a2;
-		--color-fill-hover: #fff;
-
-		/* Typography */
-		--font-size: 18px;
-		--font-style: italic;
-
-		/* Borders */
-		--border-width: 0px;
-		--border-width-hover: 3px;
-
-		/* Motion */
-		--transition-duration: 0.3s;
-		--translate-y-hover: -10px;
+	  /* Colors */
+	  --color-map-border: #3359a2;
+	  --color-map-text: #5f5f5f;
+	  --color-map-text-hover: #fff;
+	  --color-map-text-bg-hover: #f6821f;
+	  --color-map-bg-hover: #fff;
+	
+	  /* Typography */
+	  --font-map-size: 18px;
+	  --font-map-style: italic;
+	
+	  /* Borders width */
+	  --border-map-width: 0px;
+	  --border-map-width-hover: 5px;    
+	
+	  /* Motion */
+	  --transition-map-duration: 0.3s;
+	  --translate-y-map-hover: -8px;
+	  --transition-map-text-scale-hover: 1.02;
 	}
-
-	.path-yourmapname {
-		stroke: var(--color-border);
-		stroke-width: var(--border-width);
-		transition: fill var(--transition-duration) ease, stroke-width var(--transition-duration) ease, transform var(--transition-duration) ease, filter var(--transition-duration) ease;
-		transform: translateY(0px);
+	#svg-yourmapname path {
+	  stroke: var(--color-map-border);
+	  stroke-width: var(--border-map-width);
+	  transition: fill var(--transition-map-duration) ease, 
+	              stroke-width var(--transition-map-duration) ease, 
+	              transform var(--transition-map-duration) ease, 
+	              filter var(--transition-map-duration) ease;
+	  transform: translateY(0px);  
 	}
-
-	.path-yourmapname:hover {
-		fill: var(--color-fill-hover);
-		stroke-width: var(--border-width-hover);
-		filter: url(#path-shadow-yourmapname);
-		transform: translateY(var(--translate-y-hover));
+	#svg-yourmapname path:hover {
+	  fill: var(--color-map-bg-hover);
+	  stroke-width: var(--border-map-width-hover);
+	  filter: url(#path-shadow-yourmapname);
+	  transform: translateY(var(--translate-y-map-hover));  
 	}
-
-	.path-text-yourmapname {
-		fill: var(--color-text);
-		font-size: var(--font-size);
-		transition: fill var(--transition-duration) ease;
-		font-style: var(--font-style);
+	#svg-yourmapname text {
+	  fill: var(--color-map-text);
+	  font-size: var(--font-map-size);
+	  font-style: var(--font-map-style);
+	  transition: fill var(--transition-map-duration) ease, 
+	              transform var(--transition-map-duration) ease;
+	  transform: scale(1);
 	}
-
-	.path-yourmapname:hover+.path-text-yourmapname {
-		fill: var(--color-text-hover);
+	#svg-yourmapname g,
+	#svg-yourmapname text,
+	#svg-yourmapname rect {
+	  transition: transform var(--transition-map-duration) ease, 
+	              fill var(--transition-map-duration) ease;
+	  transform-origin: center;
+	  transform: scale(1);
+	}
+	#svg-yourmapname rect {
+	  fill: transparent;
+	}
+	#svg-yourmapname path:hover + g {
+	  transform: scale(var(--transition-map-text-scale-hover));
+	}
+	#svg-yourmapname path:hover + g text {
+	  transform: scale(var(--transition-map-text-scale-hover));
+	  fill: var(--color-map-text-hover);
+	}
+	#svg-yourmapname path:hover + g rect {
+	  transform: scale(var(--transition-map-text-scale-hover));
+	  fill: var(--color-map-text-bg-hover);
 	}
 </style>
