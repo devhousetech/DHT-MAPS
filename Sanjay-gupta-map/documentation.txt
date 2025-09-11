@@ -2,7 +2,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
 
 1.) Creating SVG file for Map
   - Use photopea to create svg map file (tutorial link here)
-  - Think of just one desired map's name, you will later use it on your entire script and css
+  - Think of just one map's name, you will later use it on your entire script and css
   - Add your newly created SVG map by copying the svg code you created in photopea and paste it inside webflow using "embed code" element
     - The svg file structure should be like this, and make sure to add svg id:
         <svg id="svg-[Replace the word “yourmapname” with your chosen map name]" ... >
@@ -55,3 +55,4 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     --transition-map-duration: this is the durations of how fast the animation will be  
     --translate-y-map-hover: this is how far the map's place will go overtop of other
     --transition-map-text-scale-hover: this is how large the map's text will resize on hover state
+
