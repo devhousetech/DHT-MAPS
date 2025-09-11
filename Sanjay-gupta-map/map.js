@@ -20,7 +20,7 @@ const yourmapname = [
   { name: "Dorset Park", fill: "#f4f4f4", link: "/yourmapname/dorset-park" },
 ];
 
-//this function's puspose is to create defs element that will be use for dropshadow(in hover state)
+//this function's puspose is to create defs element that will be use for dropshadow(in path's hover state)
 function addDropShadow(elementId) {
 	const svg = document.querySelector(`svg#svg-${elementId}`);
 	
@@ -45,7 +45,7 @@ function addDropShadow(elementId) {
 	defs.appendChild(filter);
 }
 
-// this function's puspose is to splitword according to wordPerline value you will set in array
+// this function's puspose is to splitword according to wordPerline value you will set on array
 function splitName(name, maxWordsPerLine = 2) {
 	const words = name.split(' ');
 	const lines = [];
@@ -55,62 +55,71 @@ function splitName(name, maxWordsPerLine = 2) {
 	return lines;
 }
 
-
 // this function will execute all logic
 function applyFunc(elementId, data) {
-	addDropShadow(elementId);
-	const paths = document.querySelectorAll(`svg#svg-${elementId} path`);
-	paths.forEach((path, i) => {
-		if(!data[i]) return;
+  addDropShadow(elementId);
+  const paths = document.querySelectorAll(`svg#svg-${elementId} path`);
+  paths.forEach((path, i) => {
+    if (!data[i]) return;
+    const { name, fill, link, offsetX = 0, offsetY = 0, wordsPerLine = 2 } = data[i];
+    path.setAttribute("fill", fill);
 
-		// extracting object from array
-		const { name, fill, link, offsetX = 0, offsetY = 0, wordsPerLine = 2 } = data[i];
-		path.classList.add(`path-${elementId}`);
-		
-		// this will set default fill color for each path(fill color pull from array)
-		path.setAttribute("fill", fill);
-		
-		//creating anchor element and add links in each(links pull from array)
-		let anchor;
-		if (path.parentNode.tagName.toLowerCase() !== 'a') {
-			anchor = document.createElementNS("http://www.w3.org/2000/svg", "a");
-			anchor.setAttribute("href", link);
-			anchor.setAttribute("target", "_self");
-			anchor.style.cursor = "pointer";
-			path.parentNode.insertBefore(anchor, path);
-			anchor.appendChild(path);
-		} else {
-			// this will avoid duplication of the creation of anchor
-			anchor = path.parentNode;
-		}
-		
-		//this will add text inside each path(data pull from array)
-		const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-		const bbox = path.getBBox();
-		const x = bbox.x + bbox.width / 2 + offsetX;
-		const y = bbox.y + bbox.height / 2 + offsetY;
-		text.setAttribute("x", x);
-		text.setAttribute("y", y);
-		text.setAttribute("class", `path-text-${elementId}`);
-		text.setAttribute("text-anchor", "middle");
-		text.setAttribute("dominant-baseline", "middle");
-		text.setAttribute("pointer-events", "none");
-		splitName(name, wordsPerLine).forEach((line, index) => {
-			const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-			tspan.setAttribute("x", x);
-			tspan.setAttribute("dy", index === 0 ? "0" : "1.2em");
-			tspan.textContent = line;
-			text.appendChild(tspan);
-		});
-		anchor.appendChild(text);
-		
-		// this will place selected path on top of others(in hover state)
-		path.addEventListener("mouseenter", () => {
-			anchor.parentNode.appendChild(anchor);
-		});
-	});
+    // Add anchor wrapper if not exists
+    let anchor;
+    if (path.parentNode.tagName.toLowerCase() !== "a") {
+      anchor = document.createElementNS("http://www.w3.org/2000/svg", "a");
+      anchor.setAttribute("href", link);
+      anchor.setAttribute("target", "_self");
+      anchor.style.cursor = "pointer";
+      path.parentNode.insertBefore(anchor, path);
+      anchor.appendChild(path);
+    } else {
+      anchor = path.parentNode;
+    }
+
+    // Group wrapper for text + rect
+    const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    group.setAttribute("pointer-events", "none");
+    anchor.appendChild(group);
+
+    // create text element
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    const bbox = path.getBBox();
+    const x = bbox.x + bbox.width / 2 + offsetX;
+    const y = bbox.y + bbox.height / 2 + offsetY;
+    text.setAttribute("x", x);
+    text.setAttribute("y", y);
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("dominant-baseline", "middle");
+
+    splitName(name, wordsPerLine).forEach((line, index) => {
+      const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      tspan.setAttribute("x", x);
+      tspan.setAttribute("dy", index === 0 ? "0" : "1.2em");
+      tspan.textContent = line;
+      text.appendChild(tspan);
+    });
+
+    // create rect element for bg (initially transparent in CSS)
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("rx", "4");
+    rect.setAttribute("ry", "4");
+    group.appendChild(rect);
+    group.appendChild(text);
+
+    // On hover, rect calculate required padding for text
+    path.addEventListener("mouseenter", () => {
+      anchor.parentNode.appendChild(anchor);
+      const textBBox = text.getBBox();
+      rect.setAttribute("x", textBBox.x - 10);
+      rect.setAttribute("y", textBBox.y - 8);
+      rect.setAttribute("width", textBBox.width + 20);
+      rect.setAttribute("height", textBBox.height + 16);
+    });
+  });
 }
 
 applyFunc("yourmapname", yourmapname);
 </script>
+
 
