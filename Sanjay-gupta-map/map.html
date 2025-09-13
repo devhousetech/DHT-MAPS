@@ -38,46 +38,48 @@
 <style>
 	:root {
 	  /* Colors */
-	  --color-map-border: #3359a2;
+	  --color-map-border: #f4f4f4;
 	  --color-map-text: #5f5f5f;
 	  --color-map-text-hover: #fff;
 	  --color-map-text-bg-hover: #f6821f;
+	  --color-map-border-hover: #3359a2;
 	  --color-map-bg-hover: #fff;
 	
 	  /* Typography */
-	  --font-map-size: 18px;
 	  --font-map-style: italic;
 	
 	  /* Borders width */
-	  --border-map-width: 0px;
+	  --border-map-width: 1px;
 	  --border-map-width-hover: 5px;    
 	
 	  /* Motion */
-	  --transition-map-duration: 0.3s;
+	  --transition-map-duration: 0.2s;
 	  --translate-y-map-hover: -8px;
-	  --transition-map-text-scale-hover: 1.05;
 	}
 	#svg-yourmapname path {
 	  stroke: var(--color-map-border);
 	  stroke-width: var(--border-map-width);
 	  transition: fill var(--transition-map-duration) ease, 
 	              stroke-width var(--transition-map-duration) ease, 
+	              stroke var(--transition-map-duration) ease, 
 	              transform var(--transition-map-duration) ease, 
 	              filter var(--transition-map-duration) ease;
 	  transform: translateY(0px);  
 	}
 	#svg-yourmapname path:hover {
 	  fill: var(--color-map-bg-hover);
+	  stroke: var(--color-map-border-hover);
 	  stroke-width: var(--border-map-width-hover);
 	  filter: url(#path-shadow-yourmapname);
 	  transform: translateY(var(--translate-y-map-hover));  
 	}
 	#svg-yourmapname text {
 	  fill: var(--color-map-text);
-	  font-size: var(--font-map-size);
 	  font-style: var(--font-map-style);
 	  transition: fill var(--transition-map-duration) ease, 
-	              transform var(--transition-map-duration) ease;
+	              transform var(--transition-map-duration) ease,
+	              font-size var(--transition-map-duration) ease,
+	              font-weight var(--transition-map-duration) ease;
 	  transform: scale(1);
 	}
 	#svg-yourmapname g,
@@ -92,15 +94,16 @@
 	  fill: transparent;
 	}
 	#svg-yourmapname path:hover + g {
-	  transform: scale(var(--transition-map-text-scale-hover));
+	  transform: scale(1.05);
 	}
 	#svg-yourmapname path:hover + g text {
-	  transform: scale(var(--transition-map-text-scale-hover));
+	  transform: scale(1.05);
 	  fill: var(--color-map-text-hover);
 	}
 	#svg-yourmapname path:hover + g rect {
-	  transform: scale(var(--transition-map-text-scale-hover));
+	  transform: scale(1.05);
 	  fill: var(--color-map-text-bg-hover);
 	}
 </style>
+
 
