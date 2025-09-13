@@ -43,10 +43,10 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     --color-map-text: this is the color of each map text in idle state
     --color-map-text-hover: this is the color of each map text in hover state
     --color-map-text-bg-hover: this is the backgrouond color of each map's text in hover state
+    --color-map-border-hover: this is the border color of each map in hover state
     --color-map-bg-hover: this is the backgrouond map in hover state
 
     /* Typography */
-    --font-map-size: this is the size of each map text
     --font-map-style: this is the style of each map text;
 
     /* Borders */
@@ -56,7 +56,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     /* Motion */
     --transition-map-duration: this is the durations of how fast the animation will be  
     --translate-y-map-hover: this is how far the map's place will go overtop of other
-    --transition-map-text-scale-hover: this is how large the map's text will resize on hover state
+
 
 
 
