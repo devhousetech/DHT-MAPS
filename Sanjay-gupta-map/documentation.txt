@@ -24,8 +24,10 @@ Sanjay Gupta Map: Code Usage and Editing Guide
         -name: name for each map's places
         -fill: default color of specific place(in idle state)
         -link: redirect link for each places inside the map
-        -offsetX: use to adjust text element's position horizontally(remove in array's specific object if offset is not needed)
-        -offsetY: use to adjust text element's position vertically(remove in array's specific object if offset is not needed)
+        -offsetX: use to adjust text element's position horizontally(just remove in array's specific object if offset is not needed)
+        -offsetY: use to adjust text element's position vertically(just remove in array's specific object if offset is not needed)
+        -fontSize: use to adjust text element's size(default is 18px if you will not add value, remove in array's specific object if changing fontSize is not necessary)
+        -disable: use to disable specific location, just add disable:true in array(just remove in array's specific object if you not want to disable)
         -wordsPerLine: helps when you want to make the next word be placed into next line, set desired word per line(the deafault value will be 2 words per line if you will not add any)
   -Congrats! Now you are done with the data, let's proceed in updating scripts
 
@@ -55,6 +57,7 @@ Sanjay Gupta Map: Code Usage and Editing Guide
     --transition-map-duration: this is the durations of how fast the animation will be  
     --translate-y-map-hover: this is how far the map's place will go overtop of other
     --transition-map-text-scale-hover: this is how large the map's text will resize on hover state
+
 
 
 
