@@ -22,30 +22,30 @@ const yourmapname = [
 
 //this function's puspose is to create defs element that will be use for dropshadow(in path's hover state)
 function addDropShadow(elementId) {
-	const svg = document.querySelector(`svg#svg-${elementId}`);
-	
-	const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-	svg.insertBefore(defs, svg.firstChild);
-	
-	const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
-	filter.setAttribute("id", `path-shadow-${elementId}`);
-	filter.setAttribute("x", "-50%");
-	filter.setAttribute("y", "-50%");
-	filter.setAttribute("width", "200%");
-	filter.setAttribute("height", "200%");
-	
-	const dropShadow = document.createElementNS("http://www.w3.org/2000/svg", "feDropShadow");
-	dropShadow.setAttribute("dx", "2");
-	dropShadow.setAttribute("dy", "2");
-	dropShadow.setAttribute("stdDeviation", "3");
-	dropShadow.setAttribute("flood-color", "#000");
-	dropShadow.setAttribute("flood-opacity", "0.4");
-	
-	filter.appendChild(dropShadow);
-	defs.appendChild(filter);
+  const svg = document.querySelector(`svg#svg-${elementId}`);
+  
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  svg.insertBefore(defs, svg.firstChild);
+  
+  const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+  filter.setAttribute("id", `path-shadow-${elementId}`);
+  filter.setAttribute("x", "-50%");
+  filter.setAttribute("y", "-50%");
+  filter.setAttribute("width", "200%");
+  filter.setAttribute("height", "200%");
+  
+  const dropShadow = document.createElementNS("http://www.w3.org/2000/svg", "feDropShadow");
+  dropShadow.setAttribute("dx", "4");   
+  dropShadow.setAttribute("dy", "4");          
+  dropShadow.setAttribute("stdDeviation", "6"); 
+  dropShadow.setAttribute("flood-color", "#000");
+  dropShadow.setAttribute("flood-opacity", "0.6"); 
+  
+  filter.appendChild(dropShadow);
+  defs.appendChild(filter);
 }
 
-// this function's puspose is to splitword according to wordPerline value you will set on array
+// this function's puspose is to splitword according to wordPerline value you will set
 function splitName(name, maxWordsPerLine = 2) {
 	const words = name.split(' ');
 	const lines = [];
@@ -61,16 +61,17 @@ function applyFunc(elementId, data) {
   const paths = document.querySelectorAll(`svg#svg-${elementId} path`);
   paths.forEach((path, i) => {
     if (!data[i]) return;
-    const { name, fill, link, offsetX = 0, offsetY = 0, wordsPerLine = 2 } = data[i];
+    const { name, fill, link, offsetX = 0, offsetY = 0, wordsPerLine = 2, fontSize = "18px", disable = false } = data[i];
     path.setAttribute("fill", fill);
 
     // Add anchor wrapper if not exists
     let anchor;
     if (path.parentNode.tagName.toLowerCase() !== "a") {
       anchor = document.createElementNS("http://www.w3.org/2000/svg", "a");
-      anchor.setAttribute("href", link);
-      anchor.setAttribute("target", "_self");
-      anchor.style.cursor = "pointer";
+      anchor.setAttribute("href", disable ? "#" : link);
+  		anchor.setAttribute("target", "_self");
+  		anchor.setAttribute("pointer-events", disable ? "none" : "auto");
+  		anchor.style.cursor = disable ? "default" : "pointer";
       path.parentNode.insertBefore(anchor, path);
       anchor.appendChild(path);
     } else {
@@ -91,6 +92,7 @@ function applyFunc(elementId, data) {
     text.setAttribute("y", y);
     text.setAttribute("text-anchor", "middle");
     text.setAttribute("dominant-baseline", "middle");
+    text.setAttribute("font-size", disable ? "0px" : fontSize);
 
     splitName(name, wordsPerLine).forEach((line, index) => {
       const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
@@ -110,16 +112,21 @@ function applyFunc(elementId, data) {
     // On hover, rect calculate required padding for text
     path.addEventListener("mouseenter", () => {
       anchor.parentNode.appendChild(anchor);
+      text.setAttribute("font-size", "20px");
       const textBBox = text.getBBox();
-      rect.setAttribute("x", textBBox.x - 10);
+      rect.setAttribute("x", textBBox.x - 15);
       rect.setAttribute("y", textBBox.y - 8);
-      rect.setAttribute("width", textBBox.width + 20);
+      rect.setAttribute("width", textBBox.width + 30);
       rect.setAttribute("height", textBBox.height + 16);
     });
+    path.addEventListener("mouseleave", () => {
+  		text.setAttribute("font-size", fontSize); 
+		});
   });
 }
 
 applyFunc("yourmapname", yourmapname);
 </script>
+
 
 
