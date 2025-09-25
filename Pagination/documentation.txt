@@ -1,0 +1,15 @@
+How to use?
+
+1.) Add a Collection List element in Webflow and make sure to enable Paginate Items in the Collection List settings.
+
+2.) Copy all the code from pagination.js and pagination.css, then paste it inside an Embed Code block in Webflow. Place the embed block anywhere below the Collection List on your page.
+
+3.) To customize the pagination button colors, edit the values of the CSS variables you copied from pagination.css:
+			:root {
+				--button-bg-color: #e3e3e3;
+				--button-font-color: #000;
+				--button-bg-color-current: #d3a675;
+				--button-font-color-current: #fff;
+				--button-bg-color-hover: #d3a675;
+				--button-font-color-hover: #fff;
+			}

@@ -1,0 +1,53 @@
+
+<style>
+:root {
+	--button-bg-color: #e3e3e3;
+	--button-font-color: #000;
+	--button-bg-color-current: #d3a675;
+	--button-font-color-current: #fff;
+	--button-bg-color-hover: #d3a675;
+	--button-font-color-hover: #fff;
+}
+.fs-list_pagination_button.w--current {
+    color: var(--button-font-color-current);
+    cursor: not-allowed;
+    background-color: var(--button-bg-color-current);
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+div.list_page-buttons{
+		display: contents;
+}
+div.w-pagination-wrapper a{
+		margin: 2px;
+}
+a.fs-list_pagination_button,
+.w-pagination-next,
+.w-pagination-previous {
+    color: var(--button-font-color);
+    background-color: var(--button-bg-color);
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+a.fs-list_pagination_button:hover,
+.w-pagination-previous:hover,
+.w-pagination-next:hover {
+    color: var(--button-font-color-hover);
+    background-color: var(--button-bg-color-hover);
+    transform: scale(1.05); /* scale effect on hover */
+}
+
+.fs-list_pagination_dots p {
+  font-size: 20px;
+  letter-spacing: 4px;  
+  color: var(--button-font-color);        
+  margin: 0;           
+  padding: 0;
+  line-height: 1;    
+}
+a[aria-disabled="true"] {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+    transform: none !important;
+}
+</style>
