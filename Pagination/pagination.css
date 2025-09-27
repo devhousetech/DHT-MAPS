@@ -65,18 +65,8 @@ a[aria-disabled="true"] {
 .w-dyn-item {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.2s ease forwards;
 }
-.w-dyn-item:nth-child(1) { animation-delay: 0.1s; }
-.w-dyn-item:nth-child(2) { animation-delay: 0.2s; }
-.w-dyn-item:nth-child(3) { animation-delay: 0.3s; }
-.w-dyn-item:nth-child(4) { animation-delay: 0.3s; }
-.w-dyn-item:nth-child(5) { animation-delay: 0.3s; }
-.w-dyn-item:nth-child(6) { animation-delay: 0.3s; }
-.w-dyn-item:nth-child(7) { animation-delay: 0.3s; }
-.w-dyn-item:nth-child(8) { animation-delay: 0.3s; }
-.w-dyn-item:nth-child(9) { animation-delay: 0.3s; }
-.w-dyn-item:nth-child(10) { animation-delay: 0.3s; }
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -84,3 +74,4 @@ a[aria-disabled="true"] {
   }
 }
 </style>
+
