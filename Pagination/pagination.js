@@ -1,7 +1,7 @@
 <script async type="module" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js" fs-list></script>
 <script>
   const wrappers = document.querySelectorAll('.w-dyn-list');
-  // We use forEach so it will still work even you have multiple collection list all together in one page
+
   wrappers.forEach((wrapper) => {
     wrapper.classList.add('fs-cms_wrapper');
 
@@ -28,6 +28,7 @@
         next.classList.add('fs-list_pagination_next', 'is-list-pagination-disabled');
       }
 
+      // Create page buttons wrapper
       const pageButtonsDiv = document.createElement('div');
       pageButtonsDiv.classList.add('list_page-buttons');
 
@@ -52,5 +53,13 @@
         paginationWrapper.appendChild(pageButtonsDiv);
       }
     }
+  });
+  document.addEventListener('fs-list-update', () => {
+    const newItems = document.querySelectorAll('.w-dyn-item');
+    newItems.forEach((item, index) => {
+      item.style.animation = 'none'; // reset
+      item.offsetHeight; // trigger reflow
+      item.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
+    });
   });
 </script>
