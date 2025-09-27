@@ -8,18 +8,6 @@
     --pagination-btn-font-color-hover: #fff;
     --pagination-btn-border-radius: 5px;
   }
-.title{
-  -webkit-line-clamp: 2;
-}
-.desc{
-  -webkit-line-clamp: 3; 
-}
-.desc, .title {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .w-dyn-list{
   width: 100%;
 }
@@ -73,5 +61,26 @@ a[aria-disabled="true"] {
   pointer-events: none;
   opacity: 0.5;
   transform: none !important;
+}
+.w-dyn-item {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+.w-dyn-item:nth-child(1) { animation-delay: 0.1s; }
+.w-dyn-item:nth-child(2) { animation-delay: 0.2s; }
+.w-dyn-item:nth-child(3) { animation-delay: 0.3s; }
+.w-dyn-item:nth-child(4) { animation-delay: 0.3s; }
+.w-dyn-item:nth-child(5) { animation-delay: 0.3s; }
+.w-dyn-item:nth-child(6) { animation-delay: 0.3s; }
+.w-dyn-item:nth-child(7) { animation-delay: 0.3s; }
+.w-dyn-item:nth-child(8) { animation-delay: 0.3s; }
+.w-dyn-item:nth-child(9) { animation-delay: 0.3s; }
+.w-dyn-item:nth-child(10) { animation-delay: 0.3s; }
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
