@@ -59,7 +59,7 @@
     newItems.forEach((item, index) => {
       item.style.animation = 'none'; // reset
       item.offsetHeight; // trigger reflow
-      item.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
+      item.style.animation = `fadeInUp 0.2s ease forwards ${index * 0.02}s`;
     });
   });
 </script>
