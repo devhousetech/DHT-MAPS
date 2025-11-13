@@ -143,11 +143,12 @@
       if (!svg) return;
 
       const groups = svg.querySelectorAll("g");
-			const targetNames = ["makakilo", "ewa", "leeward-coast"];
+		const targetNames = ["makakilo", "ewa", "leeward-coast"];
       groups.forEach(g => {
-        if (!targetNames.includes(g.name)) {
-          g.classList.add("disabled");
-        }
+		const groupName = g.getAttribute("name");
+		if (!targetNames.includes(groupName)) {
+			g.classList.add("disabled");
+		}
         const path = g.querySelector('path[id="ILM-map"]');
         if (!path) return;
 
@@ -183,4 +184,5 @@
     })();
   </script>
 </body>
+
 </html>
