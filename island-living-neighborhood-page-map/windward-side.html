@@ -143,7 +143,7 @@
       if (!svg) return;
 
       const groups = svg.querySelectorAll("g");
-	  const targetNames = ["kailua", "kaneohe"];
+	  const targetNames = ["kaneohe", "kailua"];
       groups.forEach(g => {
 		const groupName = g.getAttribute("name");
 		if (!targetNames.includes(groupName)) {
@@ -185,5 +185,6 @@
   </script>
 </body>
 </html>
+
 
 
