@@ -175,7 +175,7 @@
 			const svg = document.querySelector("svg#military");
 			if (!svg) return;
 			const groups = svg.querySelectorAll("g");
-			const targetNames = ["north-shore", "leeward-coast", "waipahu","makakilo", "kaneohe","diamond-head", "hawaii-kai"];
+			const targetNames = ["north-shore", "leeward-coast", "waipahu","makakilo","diamond-head", "hawaii-kai"];
 			const regionLabels = {
 				    "central-oahu": { 
 				        top: "NCTAMS PAC ✮", 
@@ -225,7 +225,7 @@
 			        textEl.setAttribute("x", x);
 			        textEl.setAttribute("y", y);
 			
-			        svg.appendChild(textEl);
+			        group.appendChild(textEl);
 			    }
 			
 			groups.forEach(g => {
@@ -278,6 +278,7 @@
 
 
 </html>
+
 
 
 
