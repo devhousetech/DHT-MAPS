@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -190,7 +189,6 @@
 				        top: "Honolulu", 
 				        bottom: "" 
 				    }
-				    // add more if needed...
 				};
 			function addText(group, text, position = "top") {
         			const bbox = group.getBBox(); 
@@ -215,7 +213,6 @@
 				if (targetNames.includes(groupName)) {
 					g.classList.add("disabled");
 				}
-
 				const path = g.querySelector('.map-element');
 				if (!path) return;
 				// add text ONLY if region has a label in our map
@@ -247,7 +244,6 @@
 						placeholder = null;
 					}
 				}
-
 				g.addEventListener("mouseenter", bringToFront);
 				g.addEventListener("mouseleave", restore);
 				g.addEventListener("focusin", bringToFront);
@@ -262,6 +258,7 @@
 
 
 </html>
+
 
 
 
