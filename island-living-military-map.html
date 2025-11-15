@@ -177,14 +177,58 @@
 			if (!svg) return;
 			const groups = svg.querySelectorAll("g");
 			const targetNames = ["north-shore", "leeward-coast", "waipahu","makakilo", "kaneohe","diamond-head", "hawaii-kai"];
+			const regionLabels = {
+				    "central-oahu": { 
+				        top: "top text", 
+				        bottom: "bottom text" 
+				    },
+				    "military": { 
+				        top: "Military Area", 
+				        bottom: "" 
+				    },
+				    "honolulu": { 
+				        top: "Honolulu", 
+				        bottom: "" 
+				    }
+				    // add more if needed...
+				};
+			function addText(group, text, position = "top") {
+        			const bbox = group.getBBox(); 
+        			const textEl = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        			textEl.textContent = text;
+        			textEl.setAttribute("font-size", "80");
+        			textEl.setAttribute("fill", "#000");
+        			textEl.setAttribute("text-anchor", "middle");
+
+        			// center horizontally
+       				 const x = bbox.x + bbox.width / 2;
+
+        			// determine verticl position
+        			const y = position === "top"
+            		? bbox.y - 50  
+            		: bbox.y + bbox.height + 80;
+        			textEl.setAttribute("x", x);
+        			textEl.setAttribute("y", y);
+        			svg.appendChild(textEl);
+    		}
+			
 			groups.forEach(g => {
 				const groupName = g.getAttribute("name");
 				if (targetNames.includes(groupName)) {
 					g.classList.add("disabled");
 				}
+
 				const path = g.querySelector('.map-element');
 				if (!path) return;
-
+				// add text ONLY if region has a label in our map
+				if (regionLabels[groupName]) {
+				    if (regionLabels[groupName].top) {
+				        addText(g, regionLabels[groupName].top, "top");
+				    }
+				    if (regionLabels[groupName].bottom) {
+				        addText(g, regionLabels[groupName].bottom, "bottom");
+				    }
+				}
 				let placeholder = null;
 
 				function bringToFront() {
@@ -220,6 +264,7 @@
 
 
 </html>
+
 
 
 
