@@ -196,17 +196,15 @@
         			const bbox = group.getBBox(); 
         			const textEl = document.createElementNS("http://www.w3.org/2000/svg", "text");
         			textEl.textContent = text;
-        			textEl.setAttribute("font-size", "80");
-        			textEl.setAttribute("fill", "#000");
+        			textEl.setAttribute("font-size", "60");
+        			textEl.setAttribute("fill", "#fff");
         			textEl.setAttribute("text-anchor", "middle");
-
         			// center horizontally
        				 const x = bbox.x + bbox.width / 2;
-
         			// determine verticl position
         			const y = position === "top"
-            		? bbox.y - 50  
-            		: bbox.y + bbox.height + 80;
+            		? bbox.y - 10  
+            		: bbox.y + bbox.height + 40;
         			textEl.setAttribute("x", x);
         			textEl.setAttribute("y", y);
         			svg.appendChild(textEl);
@@ -264,6 +262,7 @@
 
 
 </html>
+
 
 
 
