@@ -5,14 +5,13 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<style>
-		svg#centralOahu g {
+		svg#military g {
 			transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
 				filter 320ms ease;
 			transform-origin: center;
 			transform-box: fill-box;
 		}
-
-		svg#centralOahu .map-element {
+		svg#military .map-element {
 			fill: #c0e0ed;
 			stroke: transparent;
 			stroke-width: 2px;
@@ -22,28 +21,28 @@
 			cursor: pointer;
 		}
 
-		svg#centralOahu .ILM-text {
+		svg#military .ILM-text {
 			fill: #223069;
 		}
 
-		svg#centralOahu g.hover-active {
+		svg#military g.hover-active {
 			transform: translateY(-2px) scale(1.01);
 			filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.15));
 		}
 
-		svg#centralOahu g.hover-active .map-element {
+		svg#military g.hover-active .map-element {
 			fill: #eb3d96;
 			stroke: #223069;
 		}
 
-		svg#centralOahu g.hover-active .ILM-text {
+		svg#military g.hover-active .ILM-text {
 			fill: #fff;
 		}
 
 		@media (prefers-reduced-motion: reduce) {
 
-			svg#centralOahu g,
-			svg#centralOahu .map-element {
+			svg#military g,
+			svg#military .map-element {
 				transition: none !important;
 				transform: none !important;
 				filter: none !important;
@@ -56,19 +55,19 @@
 		}
 
 		@media (max-width: 768px) {
-			svg#centralOahu {
+			svg#military {
 				width: 500px;
 			}
 		}
 
 		@media (max-width: 480px) {
-			svg#centralOahu {
+			svg#military {
 				width: 380px;
 			}
 		}
 
 		@media (max-width: 360px) {
-			svg#centralOahu {
+			svg#military {
 				width: 320px;
 			}
 		}
@@ -77,7 +76,7 @@
 
 <body>
 	<!-- Replace this SVG with your full map content -->
-	<svg id="centralOahu" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 4088 4088" width="700"
+	<svg id="military" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 4088 4088" width="700"
 		height="auto">
 		<g name="neutral-island">
 			<path class="map-element"
@@ -184,9 +183,8 @@
 
 	<script>
 		(function () {
-			const svg = document.querySelector("svg#centralOahu");
+			const svg = document.querySelector("svg#military");
 			if (!svg) return;
-
 			const groups = svg.querySelectorAll("g");
 			const targetNames = ["north-shore", "leeward-coast", "waipahu","makakilo", "kaneohe","diamond-head", "hawaii-kai"];
 			groups.forEach(g => {
@@ -232,3 +230,4 @@
 
 
 </html>
+
