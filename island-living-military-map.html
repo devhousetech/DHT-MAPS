@@ -178,15 +178,27 @@
 			const targetNames = ["north-shore", "leeward-coast", "waipahu","makakilo", "kaneohe","diamond-head", "hawaii-kai"];
 			const regionLabels = {
 				    "central-oahu": { 
-				        top: "top text", 
-				        bottom: "bottom text" 
+				        top: "NCTAMS PAC ✮", 
+				        bottom: "✮ SCHOFIELD & WHEELER" 
 				    },
-				    "military": { 
-				        top: "Military Area", 
+				    "pearl-city": { 
+				        top: "CAMP SMITH ✮", 
+				        bottom: "✮ JBPHH" 
+				    },
+				    "ewan": { 
+				        top: "", 
+				        bottom: "✮ USCG" 
+				    }
+					"honolulu-metro": { 
+				        top: "", 
+				        bottom: "✮ FS & USCG" 
+				    }
+					"kailua": { 
+				        top: "BAFS ✮", 
 				        bottom: "" 
-				    },
-				    "honolulu": { 
-				        top: "Honolulu", 
+				    }
+					"kaneohe": { 
+				        top: "KMCB ✮", 
 				        bottom: "" 
 				    }
 				};
@@ -207,8 +219,8 @@
 			
 			        // place text very close to ILM-text top or bottom
 			        const y = position === "top"
-			            ? bbox.y - 20
-			            : bbox.y + bbox.height + 45;
+			            ? bbox.y - 30
+			            : bbox.y + bbox.height + 55;
 			
 			        textEl.setAttribute("x", x);
 			        textEl.setAttribute("y", y);
@@ -266,6 +278,7 @@
 
 
 </html>
+
 
 
 
