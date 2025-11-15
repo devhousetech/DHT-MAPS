@@ -239,11 +239,13 @@
 				const path = g.querySelector('.map-element');
 				if (!path) return;
 				// add text ONLY if region has a label in our map
-				if (regionLabels[groupName].top) {
-				    addText(g, regionLabels[groupName].top, "top", regionLabels[groupName].topOffset);
-				}
-				if (regionLabels[groupName].bottom) {
-				    addText(g, regionLabels[groupName].bottom, "bottom", regionLabels[groupName].bottomOffset);
+				if (regionLabels[groupName]) {
+				    if (regionLabels[groupName].top) {
+				        addText(g, regionLabels[groupName].top, "top", regionLabels[groupName].topOffset);
+				    }
+				    if (regionLabels[groupName].bottom) {
+				        addText(g, regionLabels[groupName].bottom, "bottom", regionLabels[groupName].bottomOffset);
+				    }
 				}
 				let placeholder = null;
 
@@ -279,6 +281,7 @@
 
 
 </html>
+
 
 
 
