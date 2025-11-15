@@ -191,7 +191,7 @@
 			const targetNames = ["north-shore", "leeward-coast", "waipahu","makakilo", "kaneohe","diamond-head", "hawaii-kai"];
 			groups.forEach(g => {
 				const groupName = g.getAttribute("name");
-				if (!targetNames.includes(groupName)) {
+				if (targetNames.includes(groupName)) {
 					g.classList.add("disabled");
 				}
 				const path = g.querySelector('.map-element');
@@ -229,5 +229,6 @@
 		})();
 	</script>
 </body>
+
 
 </html>
