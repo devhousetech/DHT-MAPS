@@ -177,57 +177,60 @@
 			const groups = svg.querySelectorAll("g");
 			const targetNames = ["north-shore", "leeward-coast", "waipahu","makakilo","diamond-head", "hawaii-kai"];
 			const regionLabels = {
-				    "central-oahu": { 
-				        top: "NCTAMS PAC ✮", 
-				        bottom: "✮ SCHOFIELD & WHEELER" 
-				    },
-				    "pearl-city": { 
-				        top: "✮ CAMP SMITH", 
-				        bottom: "✮ JBPHH" 
-				    },
-				    "ewan": { 
-				        top: "", 
-				        bottom: "✮ USCG" 
-				    },
-					"honolulu-metro": { 
-				        top: "", 
-				        bottom: "✮ FS & USCG" 
-				    },
-					"kailua": { 
-				        top: "BAFS ✮", 
-				        bottom: "" 
-				    },
-					"kaneohe": { 
-				        top: "✮ KMCB", 
-				        bottom: "" 
-				    }
-				};
-			    function addText(group, text, position = "top") {
-			        const ilmPath = group.querySelector(".ILM-text");
-			        if (!ilmPath) return;
-			
-			        const bbox = ilmPath.getBBox();
-			        const textEl = document.createElementNS("http://www.w3.org/2000/svg", "text");
-			
-			        textEl.textContent = text;
-			        textEl.setAttribute("font-size", "60");
-			        textEl.setAttribute("fill", "#fff");
-			        textEl.setAttribute("text-anchor", "middle");
-			
-			        // center horizontally relative to ILM-text
-			        const x = bbox.x + bbox.width / 2;
-			
-			        // place text very close to ILM-text top or bottom
-			        const y = position === "top"
-			            ? bbox.y - 30
-			            : bbox.y + bbox.height + 55;
-			
-			        textEl.setAttribute("x", x);
-			        textEl.setAttribute("y", y);
-			
-			        group.appendChild(textEl);
+			    "central-oahu": { 
+			        top: "NCTAMS PAC ✮",
+			        topOffset: -40, 
+			        bottom: "✮ SCHOFIELD & WHEELER",
+			        bottomOffset: 70
+			    },
+			    "pearl-city": { 
+			        top: "✮ CAMP SMITH",
+			        topOffset: -30,
+			        bottom: "✮ JBPHH",
+			        bottomOffset: 65
+			    },
+			    "ewan": { 
+			        bottom: "✮ USCG",
+			        bottomOffset: 50
+			    },
+			    "honolulu-metro": { 
+			        bottom: "✮ FS & USCG",
+			        bottomOffset: 60
+			    },
+			    "kailua": { 
+			        top: "BAFS ✮",
+			        topOffset: -35
+			    },
+			    "kaneohe": { 
+			        top: "✮ KMCB",
+			        topOffset: -35
 			    }
+			};
+			function addText(group, text, position = "top", offset = null) {
+			    const ilmPath = group.querySelector(".ILM-text");
+			    if (!ilmPath) return;
 			
+			    const bbox = ilmPath.getBBox();
+			    const textEl = document.createElementNS("http://www.w3.org/2000/svg", "text");
+			
+			    textEl.textContent = text;
+			    textEl.setAttribute("font-size", "60");
+			    textEl.setAttribute("fill", "#fff");
+			    textEl.setAttribute("text-anchor", "middle");
+			
+			    const defaultTop = -30;
+			    const defaultBottom = 55;
+			
+			    const x = bbox.x + bbox.width / 2;
+			    const y = position === "top"
+			        ? bbox.y + (offset ?? defaultTop)
+			        : bbox.y + bbox.height + (offset ?? defaultBottom);
+			
+			    textEl.setAttribute("x", x);
+			    textEl.setAttribute("y", y);
+			
+			    group.appendChild(textEl);
+			}
 			groups.forEach(g => {
 				const groupName = g.getAttribute("name");
 				if (targetNames.includes(groupName)) {
@@ -236,13 +239,11 @@
 				const path = g.querySelector('.map-element');
 				if (!path) return;
 				// add text ONLY if region has a label in our map
-				if (regionLabels[groupName]) {
-				    if (regionLabels[groupName].top) {
-				        addText(g, regionLabels[groupName].top, "top");
-				    }
-				    if (regionLabels[groupName].bottom) {
-				        addText(g, regionLabels[groupName].bottom, "bottom");
-				    }
+				if (regionLabels[groupName].top) {
+				    addText(g, regionLabels[groupName].top, "top", regionLabels[groupName].topOffset);
+				}
+				if (regionLabels[groupName].bottom) {
+				    addText(g, regionLabels[groupName].bottom, "bottom", regionLabels[groupName].bottomOffset);
 				}
 				let placeholder = null;
 
@@ -278,6 +279,7 @@
 
 
 </html>
+
 
 
 
