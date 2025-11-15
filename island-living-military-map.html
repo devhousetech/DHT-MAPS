@@ -22,6 +22,10 @@
 		svg#military .ILM-text {
 			fill: #fff;
 		}
+		svg#military g text{
+			transform-box: fill-box;
+			transform-origin: center;
+		}
 		svg#military g.hover-active {
 			transform: translateY(-2px) scale(1.01);
 			filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.15));
@@ -61,6 +65,24 @@
 			svg#military {
 				width: 320px;
 			}
+		}
+		#pearl-city-bottom-label{
+			transform: translate(-224px, 394px);
+		}
+		#pearl-city-top-label{
+			transform: translate(95px, 272px);
+		}
+		#kaneohe-bottom-label{
+			transform: translate(779px, 512px);
+		}
+		#central-oahu-top-label{
+			transform: translate(0px, -117px);
+		}
+		#central-oahu-bottom-label{
+			transform: translate(97px, 61px);
+		}
+		#kailua-top-label{
+			transform: translate(30px, -68px);
 		}
 	</style>
 </head>
@@ -185,7 +207,7 @@
 			        top: "✮ CAMP SMITH",
 			        bottom: "✮ JBPHH",
 			    },
-			    "ewan": { 
+			    "ewa": { 
 			        bottom: "✮ USCG",
 			    },
 			    "honolulu-metro": { 
@@ -273,6 +295,7 @@
 
 
 </html>
+
 
 
 
