@@ -149,6 +149,10 @@
 		if (!targetNames.includes(groupName)) {
 			g.classList.add("disabled");
 		}
+		else {
+		    const el = g.querySelector(".map-element");
+		    if (el) el.style.fill = "#ff8bc6"; 
+		}
         const path = g.querySelector('.map-element');
         if (!path) return;
 
@@ -185,6 +189,7 @@
   </script>
 </body>
 </html>
+
 
 
 
