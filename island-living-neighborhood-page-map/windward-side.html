@@ -149,15 +149,14 @@
 	  const targetNames = ["kaneohe", "kailua"];
       groups.forEach(g => {
 		const groupName = g.getAttribute("name");
+		const mapElement = g.querySelector(".map-element");
 		if (!targetNames.includes(groupName)) {
 			g.classList.add("disabled");
 		}
 		else {
-		    g.classList.add("highlighted");
+		    mapElement.classList.add("highlighted");
 		}
-        const path = g.querySelector('.map-element');
-        if (!path) return;
-
+        if (!mapElement) return;
         let placeholder = null;
 
         function bringToFront() {
@@ -191,6 +190,7 @@
   </script>
 </body>
 </html>
+
 
 
 
