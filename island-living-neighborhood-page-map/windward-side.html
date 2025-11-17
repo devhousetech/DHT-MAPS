@@ -20,6 +20,9 @@
       transition: fill 320ms ease-in-out, stroke 320ms ease-in-out;
       cursor: pointer;
     }
+	svg#windwardSide .map-element.highlighted {
+      fill: #ff8bc6;
+    }
 
 	svg#windwardSide .ILM-text {
       fill: #223069;
@@ -150,8 +153,7 @@
 			g.classList.add("disabled");
 		}
 		else {
-		    const el = g.querySelector(".map-element");
-		    if (el) el.style.fill = "#ff8bc6"; 
+		    g.classList.add("highlighted");
 		}
         const path = g.querySelector('.map-element');
         if (!path) return;
@@ -189,6 +191,7 @@
   </script>
 </body>
 </html>
+
 
 
 
