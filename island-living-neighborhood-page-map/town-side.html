@@ -148,13 +148,13 @@
       	const groups = svg.querySelectorAll("g");
 	  	const targetNames = ["honolulu-metro", "pearl-city"];
 		const mapElement = g.querySelector(".map-element");
+		if (!mapElement) return;
 		if (!targetNames.includes(groupName)) {
 			g.classList.add("disabled");
 		}
 		else {
 		    mapElement.classList.add("highlighted");
 		}
-        if (!mapElement) return;
         let placeholder = null;
 
         function bringToFront() {
