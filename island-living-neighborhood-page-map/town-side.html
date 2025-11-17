@@ -35,7 +35,9 @@
       fill: #eb3d96;
       stroke: #223069;
     }
-
+	svg#windwardSide .map-element.highlighted {
+      fill: #ff8bc6;
+    }
     svg#townSide g.hover-active .ILM-text {
       fill: #fff;
     }
@@ -49,7 +51,7 @@
     }
 	.disabled {
 		pointer-events: none;
-		opacity: 0.5;
+		opacity: 0.7;
 	}
     @media (max-width: 768px) {
       svg#townSide  {
@@ -143,16 +145,16 @@
       const svg = document.querySelector("svg#townSide");
       if (!svg) return;
 
-      const groups = svg.querySelectorAll("g");
-	  const targetNames = ["honolulu-metro", "pearl-city"];
-      groups.forEach(g => {
-		const groupName = g.getAttribute("name");
+      	const groups = svg.querySelectorAll("g");
+	  	const targetNames = ["honolulu-metro", "pearl-city"];
+		const mapElement = g.querySelector(".map-element");
 		if (!targetNames.includes(groupName)) {
 			g.classList.add("disabled");
 		}
-        const path = g.querySelector('.map-element');
-        if (!path) return;
-
+		else {
+		    mapElement.classList.add("highlighted");
+		}
+        if (!mapElement) return;
         let placeholder = null;
 
         function bringToFront() {
