@@ -14,7 +14,7 @@
     }
 
     svg#northShore .map-element {
-      fill: #c0e0ed;
+      fill: #213069;
       stroke: transparent;
       stroke-width: 2px;
       stroke-linejoin: round;
@@ -22,9 +22,11 @@
       transition: fill 320ms ease-in-out, stroke 320ms ease-in-out;
       cursor: pointer;
     }
-
+	svg#northShore .map-element.highlighted {
+      fill: #ff60b1;
+    }
 	svg#northShore .ILM-text {
-      fill: #223069;
+      fill: #fff;
     }
 	  
     svg#northShore g.hover-active {
@@ -35,9 +37,6 @@
     svg#northShore g.hover-active .map-element {
       fill: #eb3d96;
       stroke: #223069;
-    }
-	svg#northShore .map-element.highlighted {
-      fill: #ff8bc6;
     }
     svg#northShore g.hover-active .ILM-text {
       fill: #fff;
