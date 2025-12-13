@@ -1,9 +1,9 @@
 <svg
   version="1.2"
+  preserveAspectRatio="xMidYMid meet"
+  class="Whole-Map"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 4000 4000"
-  width="4000"
-  height="4000"
 >
   <style>
     .s0 {
@@ -18,6 +18,8 @@
       paint-order: stroke fill markers;
       stroke-linejoin: round;
       stroke-width: 4;
+      transition: 0.8s ease;
+      transform-origin: center;
     }
     .s3 {
       fill: #444444;
@@ -30,6 +32,12 @@
     }
     .area-link:hover .map-path {
       fill: #000 !important;
+    }
+    .area-link:hover .s2 {
+      transform: scale(1.05);
+    }
+    .Whole-Map {
+      filter: drop-shadow(-12px 12px 8px rgba(0, 0, 0, 0.5));
     }
   </style>
   <path
