@@ -19,6 +19,9 @@
 			transition: fill 320ms ease-in-out, stroke 320ms ease-in-out;
 			cursor: pointer;
 		}
+		svg#centralOahu .map-element.highlighted {
+	      fill: #ff60b1;
+	    }
 		svg#military .ILM-text {
 			fill: #fff;
 		}
@@ -252,8 +255,12 @@
 			}
 			groups.forEach(g => {
 				const groupName = g.getAttribute("name");
+				const mapElement = g.querySelector(".map-element");
 				if (targetNames.includes(groupName)) {
 					g.classList.add("disabled");
+				}
+				else {
+				    mapElement.classList.add("highlighted");
 				}
 				const path = g.querySelector('.map-element');
 				if (!path) return;
@@ -300,6 +307,7 @@
 
 
 </html>
+
 
 
 
